@@ -29,12 +29,17 @@ func main() {
 		r.GET("/", func(ctx *gin.Context) {
 			ctx.FileFromFS("/", fs)
 		})
+		r.GET("/video/*any", func(ctx *gin.Context) {
+			ctx.FileFromFS("/", fs)
+		})
+		r.GET("/rating/*any", func(ctx *gin.Context) {
+			ctx.FileFromFS("/", fs)
+		})
 		r.GET("/favicon.ico", func(ctx *gin.Context) {
 			ctx.FileFromFS("favicon.ico", fs)
 		})
 		r.GET("/assets/*any", func(ctx *gin.Context) {
 			filename := ctx.Param("any")
-			log.Println(filename)
 			ctx.FileFromFS("assets/"+filename, fs)
 		})
 		r.GET("/videos/*any", func(ctx *gin.Context) {
